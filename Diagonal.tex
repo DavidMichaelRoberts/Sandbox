@@ -1,0 +1,70 @@
+\documentclass{tufte-handout}
+\usepackage{amsmath,stmaryrd,amssymb,amsthm,url,booktabs,hyperref}
+
+\usepackage{euler}
+
+
+
+\title{The diagonal argument redux\thanks{This document is released \\ under a CC0 license: \href{http://creativecommons.org/publicdomain/zero/1.0/}{\texttt{creativecommons.org/publicdomain/zero/1.0/}}}}
+\author{David Michael Roberts}
+\date{\today}
+
+
+\theoremstyle{definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem*{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{q}{Question}
+\newtheorem*{conj}{Conjecture}
+\newtheorem*{rem}{Remark}
+
+\DeclareMathOperator{\id}{id}
+\def\CC{\mathcal{C}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+The following is a generalisation of the contrapositive to Lawvere's fixed point theorem,\footnote{F.W.~Lawvere, \emph{Diagonal arguments and cartesian closed categories}, Lecture Notes in Mathematics, \textbf{92} (1969), 134--45} from categories with finite products to a much more general setting.\end{abstract}
+
+Define a \emph{magmoidal category} to be a category $\CC$ equipped with a functor $\# \colon \CC\times \CC\to \CC$.
+A magmoidal category is said to have \emph{diagonals} if there is a natural transformation $\delta\colon \id_C \Rightarrow \#\circ \Delta_\CC$. 
+For the following we shall fix a magmoidal category with diagonals $(\CC,\#,\delta)$.
+Examples include categories with finite products (\emph{cartesian} magmoidal categories) and monoidal categories with diagonals.
+
+
+
+
+In the cartesian setting, a map $A\times B \to C$ can be viewed as an $A$-parameterised family of maps $B\to C$; in the cartesian closed case this is of course equivalent to a map $A \to C^B$.
+In our setting of a magmoidal category, we still want to think of a morphism $A\# B \to C$ as being an $A$-parametrised family of maps $B\to C$.
+We can ask whether, for a given $A$, one can find every map $B\to C$ inside \emph{some} $A$-parametrised family $A\# B \to C$.
+
+\begin{definition}
+In any magmoidal category with diagonals $(C,\#,\delta)$, a map $F\colon A\#B\to C$ is an \emph{incomplete parametrisation} of maps $B\to C$ if there exists an $f\colon B\to C$ such that for all $a\colon X\to A$, there is a $b = b_a\colon X\to B$ with $f\circ b \not= f\circ(a\# b)\circ \delta\colon X\to C$.
+\end{definition}
+
+\noindent
+What this definition is saying is that there is a map $B\to C$ that differs from every map in the $A$-parametrised family for at least one argument.
+Finally, let us say that an endomorphism $\sigma\colon C\to C$ in a category is \emph{free} if for all $c\colon X\to C$, $\sigma\circ c \not=c$.
+
+\begin{theorem}
+  For $(C,\#,\delta)$ a magmoidal category with diagonals, and $\sigma \colon C\to C$ a free endomorphism, every $F\colon A\# A \to C$ is an incomplete parametrisation of maps $A\to C$.
+\end{theorem}
+
+\begin{proof}
+  Define $f = \sigma\circ F\circ \delta$. 
+  Then for all $a\colon X\to A$, we have $f\circ a = \sigma \circ F\circ \delta = \sigma \circ F \circ (a\#a)\circ \delta \not=F\circ (a\#a)\circ \delta$.
+\end{proof}
+
+\noindent
+This covers all the cases of the diagonal argument by Lawvere, but  one notable feature of the above is that it no longer relies on global elements $1\to A$ etc as in Lawvere's presentation, but arbitrary generalised elements.
+Also, one could conceivably generalise the definition of incomplete parametrisation so that the generalised element $b\colon X\to B$ was instead $b\colon Y\to X \to B$ for some suitable $p\colon Y\to X$ (for example some regular epimorphism) and then use the composite $p\circ a\colon Y\to A$ instead of just $a$.
+
+
+
+
+
+\end{document}
