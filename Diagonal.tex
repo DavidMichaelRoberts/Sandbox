@@ -43,7 +43,7 @@ In our setting of a magmoidal category, we still want to think of a morphism $A\
 We can ask whether, for a given $A$, one can find every map $B\to C$ inside \emph{some} $A$-parametrised family $A\# B \to C$.
 
 \begin{definition}
-In any magmoidal category with diagonals $(C,\#,\delta)$, a map $F\colon A\#B\to C$ is an \emph{incomplete parametrisation} of maps $B\to C$ if there exists an $f\colon B\to C$ such that for all $a\colon X\to A$, there is a $b = b_a\colon X\to B$ with $f\circ b \not= f\circ(a\# b)\circ \delta\colon X\to C$.
+In any magmoidal category with diagonals $(C,\#,\delta)$, a map $F\colon A\#B\to C$ is an \emph{incomplete parametrisation} of maps $B\to C$ if there exists an $f\colon B\to C$ such that for all $a\colon X\to A$, there is a $b = b_a\colon X\to B$ with $f\circ b \not= F\circ(a\# b)\circ \delta\colon X\to C$.
 \end{definition}
 
 \noindent
@@ -56,7 +56,7 @@ Finally, let us say that an endomorphism $\sigma\colon C\to C$ in a category is 
 
 \begin{proof}
   Define $f = \sigma\circ F\circ \delta$. 
-  Then for all $a\colon X\to A$, we have $f\circ a = \sigma \circ F\circ \delta = \sigma \circ F \circ (a\#a)\circ \delta \not=F\circ (a\#a)\circ \delta$.
+  Then for all $a\colon X\to A$, we have $f\circ a = \sigma \circ F\circ \delta \circ a= \sigma \circ F \circ (a\#a)\circ \delta \not=F\circ (a\#a)\circ \delta$.
 \end{proof}
 
 \noindent
