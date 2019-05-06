@@ -22,28 +22,73 @@
 \newtheorem*{rem}{Remark}
 
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Pre}{Pre}
 \def\CC{\mathcal{C}}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-The following is a generalisation of the contrapositive to Lawvere's fixed point theorem,\footnote{F.W.~Lawvere, \emph{Diagonal arguments and cartesian closed categories}, Lecture Notes in Mathematics, \textbf{92} (1969), 134--45} from categories with finite products to a much more general setting.\end{abstract}
+The following is a generalisation of the contrapositive to Lawvere's fixed-point theorem, from categories with finite products to a much more general setting.\end{abstract}
 
-Define a \emph{magmoidal category} to be a category $\CC$ equipped with a functor $\# \colon \CC\times \CC\to \CC$.
+Lawvere's fixed-point theorem\footnote{F.W.~Lawvere, \emph{Diagonal arguments and cartesian closed categories}, Lecture Notes in Mathematics, \textbf{92} (1969), 134--45. Republished in:
+Reprints in Theory and Applications of Categories, No. 15 (2006), pp 1--13.} is a result about cartesian closed categories whose contrapositive is an abstract, categorical version of Cantor's diagonal argument.
+It says that if $A \to Y^A$ is surjective on global points\sidenote{A global point of $A$ is a map $1\to A$}, then every endomorphism of $Y$ has a fixed global point.
+However, Lawvere goes further and observes that the proof of his theorem does not really use the \emph{closed} structure except to translate from the theorem statement to the setting in which the fixed point is constructed.
+Thus with appropriate unwinding of the defintions involved, the theorem makes sense in an arbitrary category with finite products: a \emph{cartesian} category.
+
+On the face of it, this seems like the ultimate version of the diagonal argument: one needs the terminal object (a $0$-ary product) to talk about global points, and the binary products to talk about the function $A\times A \to Y$ to which diagonalisation is applied.
+However, closer inspection of the proof makes it clear that it never uses the projection maps that characterise cartesian categories among monoidal categories.
+Further, the universal property of the product is never used aside from constructing the diagonal $A\to A\times A$. 
+Monoidal categories with diagonal maps exist, and so one can see immediately that Lawvere's proof in the cartesian case applies to more general monoidal categories with diagonals.
+A second, even closer, inspection shows that the coherence structure of the monoidal category is never used.
+Ultimately, while the first instinct is to replace the terminal object with the monoidal unit, we can remove the reliance on global points entirely, and just use arbitrary generalised elements.
+We can thus supply what seems like the minimal structure that supports a diagonal argument, which is what Lawvere ultimately uses his fixed-point theorem for.
+
+
+\begin{definition}
+A \emph{magmoidal category} is a category $\CC$ equipped with a functor $\# \colon \CC\times \CC\to \CC$.
 A magmoidal category is said to have \emph{diagonals} if there is a natural transformation $\delta\colon \id_C \Rightarrow \#\circ \Delta_\CC$. 
+\end{definition}
+
+
+Examples include categories with finite products (\emph{cartesian} magmoidal categories), and monoidal and skew-monoidal categories with diagonals.
+For a nontrivial example, consider a (skew-)monoidal category $(\mathcal{C},\otimes)$ with finite coproducts. 
+Then for each object $x\in \mathcal{C}$, $a\# b := c\amalg (a\otimes b)$ defines the structure of a magmoidal category.
+If moreover the (skew-)monoidal structure admits diagonals, then so does this magmoidal structure.
 For the following we shall fix a magmoidal category with diagonals $(\CC,\#,\delta)$.
-Examples include categories with finite products (\emph{cartesian} magmoidal categories) and monoidal categories with diagonals.
-
-
 
 
 In the cartesian setting, a map $A\times B \to C$ can be viewed as an $A$-parameterised family of maps $B\to C$; in the cartesian closed case this is of course equivalent to a map $A \to C^B$.
 In our setting of a magmoidal category, we still want to think of a morphism $A\# B \to C$ as being an $A$-parametrised family of maps $B\to C$.
+
+\medskip
+
+\hrule
+\begin{quote}
+\small How does one see this? Given any $a\colon X\to A$, hence supposedly picking out one such map, then for any $Y\xrightarrow{p} X \in \mathcal{C}_{/X}$ and $b\colon Y\to B$ we get 
+\[
+F(p^*a,b)\colon Y\xrightarrow{\delta} Y\# Y \xrightarrow{p\# id_Y} X\# Y \xrightarrow{a\# b} A \# B \xrightarrow{F} C
+\] 
+So, if we think of $a$ as being an element of $A$ at stage $X$, then for any later stage $Y$ (via $p$), we have an assignment of elements $b\mapsto F(p^*a,b)$.
+More formally, recall that for any object $D$ of $\mathcal{C}$, there is a presheaf on $\mathcal{C}_{/X}$ given by 
+\[
+  X^*y_D\colon (Y\xrightarrow{p} X) \mapsto \mathcal{C}(Y,D).
+\] 
+% Here $y_D$ is the reprentable presheaf arising from $D$ and $X^*\colon \Pre(\mathcal{C}) \to \Pre(\mathcal{C}_{/X})$.
+Given $a$ as above, we get a map of presheaves $X^*y_B \to X^*y_C$, with component $(Y\xrightarrow{p} X)  \mapsto \left(b\mapsto F(p^*a,b)\right)$.
+\end{quote}
+
+
+\hrule
+
+\medskip
+
 We can ask whether, for a given $A$, one can find \emph{every} map $B\to C$ inside some given $A$-parametrised family $A\# B \to C$.
 
 \begin{definition}
-In any magmoidal category with diagonals $(C,\#,\delta)$, a map $F\colon A\#B\to C$ is an \emph{incomplete parametrisation} of maps $B\to C$ if there exists an $f\colon B\to C$ such that for all $a\colon X\to A$, there is a $b = b_a\colon X\to B$ with $f\circ b \not= F\circ(a\# b)\circ \delta\colon X\to C$.
+In any magmoidal category with diagonals $(C,\#,\delta)$, a map $F\colon A\#B\to C$ is an \emph{incomplete parametrisation} of maps $B\to C$ if there exists an $f\colon B\to C$ such that for all $a\colon X\to A$, there is $Y\xrightarrow{p}X$ and $b = b_a\colon Y\to B$ with\marginnote{Here $p^*a = a\circ p$.} $f\circ b \not= F\circ((p^*a)\# b)\circ \delta\colon X\to C$.
 \end{definition}
 
 \noindent
@@ -55,13 +100,14 @@ Finally, let us say that an endomorphism $\sigma\colon C\to C$ in a category is 
 \end{theorem}
 
 \begin{proof}
-  Define $f = \sigma\circ F\circ \delta$. 
+  Define $f = \sigma\circ F\circ \delta$ and take $p=\id_X$. 
   Then for all $a\colon X\to A$, we have $f\circ a = \sigma \circ F\circ \delta \circ a= \sigma \circ F \circ (a\#a)\circ \delta \not=F\circ (a\#a)\circ \delta$.
 \end{proof}
 
 \noindent
-This covers all the cases of the diagonal argument by Lawvere, but  one notable feature of the above is that it no longer relies on global elements $1\to A$ etc as in Lawvere's presentation, but arbitrary generalised elements.
-Also, one could conceivably generalise the definition of incomplete parametrisation so that the generalised element $b\colon X\to B$ was instead $b\colon Y\to X \to B$ for some suitable $p\colon Y\to X$ (for example some regular epimorphism) and then use the composite $p\circ a\colon Y\to A$ instead of just $a$.
+This covers all the cases of the diagonal argument by Lawvere, but as mentioned above it no longer relies on global points $1\to A$ etc as in Lawvere's presentation, but uses arbitrary generalised elements. The question remains: is this the contrapositive to a fixed-point theorem generalising Lawvere's?
+
+
 
 
 
