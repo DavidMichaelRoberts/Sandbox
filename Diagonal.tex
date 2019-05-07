@@ -48,7 +48,7 @@ We can thus supply what seems like the minimal structure that supports a diagona
 
 
 \begin{definition}
-A \emph{magmoidal category}\footnote{Alexei Davydov, \emph{Nuclei of categories with tensor products}, Theory
+A \emph{magmoidal category}\footnote{A.~Davydov, \emph{Nuclei of categories with tensor products}, Theory
 Appl.\ Categ., Vol. 18, 2007, No. 16, pp 440--472.} is a category $\CC$ equipped with a functor $\# \colon \CC\times \CC\to \CC$.
 A magmoidal category is said to have \emph{diagonals} if there is a natural transformation $\delta\colon \id_C \Rightarrow \#\circ \Delta_\CC$. 
 \end{definition}
@@ -78,7 +78,7 @@ More formally, recall that for any object $D$ of $\mathcal{C}$, there is a presh
   X^*y_D\colon (Y\xrightarrow{p} X) \mapsto \mathcal{C}(Y,D).
 \] 
 % Here $y_D$ is the reprentable presheaf arising from $D$ and $X^*\colon \Pre(\mathcal{C}) \to \Pre(\mathcal{C}_{/X})$.
-Given $a$ as above, we get a map of presheaves $X^*y_B \to X^*y_C$, with component $(Y\xrightarrow{p} X)  \mapsto \left(b\mapsto F(p^*a,b)\right)$.
+Given $a$ as above, we get a map of presheaves $F_a\colon X^*y_B \to X^*y_C$, with component $(Y\xrightarrow{p} X)  \mapsto \left(b\mapsto F(p^*a,b)\right)$.\marginnote{Here $p^*a = a\circ p$.}
 \end{quote}
 
 
@@ -89,11 +89,11 @@ Given $a$ as above, we get a map of presheaves $X^*y_B \to X^*y_C$, with compone
 We can ask whether, for a given $A$, one can find \emph{every} map $B\to C$ inside some given $A$-parametrised family $A\# B \to C$.
 
 \begin{definition}
-In any magmoidal category with diagonals $(C,\#,\delta)$, a map $F\colon A\#B\to C$ is an \emph{incomplete parametrisation} of maps $B\to C$ if there exists an $f\colon B\to C$ such that for all $a\colon X\to A$, there is $Y\xrightarrow{p}X$ and $b = b_a\colon Y\to B$ with\marginnote{Here $p^*a = a\circ p$.} $f\circ b \not= F\circ((p^*a)\# b)\circ \delta\colon X\to C$.
+In any magmoidal category with diagonals $(C,\#,\delta)$, a map $F\colon A\#B\to C$ is an \emph{incomplete parametrisation} of maps $B\to C$ if there exists an $f\colon B\to C$ such that for all $a\colon X\to A$, there is $Y\xrightarrow{p}X$ and $b = b_a\colon Y\to B$ with $f\circ b \not= F\circ((p^*a)\# b)\circ \delta\colon X\to C$.
 \end{definition}
 
 \noindent
-What this definition is saying is that there is a map $B\to C$ that differs from every map in the $A$-parametrised family for at least one argument.
+Thinking of $F$ as an $A$-parametrised family of maps as above, this says that there is some $f\colon B\to C$ such that for no $a\colon X\to A$ is $X^*y_f = F_a\colon X^*y_B\to X^*y_C$.
 Finally, let us say that an endomorphism $\sigma\colon C\to C$ in a category is \emph{free} if for all $c\colon X\to C$, $\sigma\circ c \not=c$.
 
 \begin{theorem}
