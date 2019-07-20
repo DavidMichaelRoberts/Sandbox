@@ -1,0 +1,21 @@
+== The twisted cocycle for M_16
+
+Let V = {000, 100, 010, 110, 001, 101, 011, 111} be the elementary group 2^3, with addition mod 2 in each slot.
+
+This file describes the twisted cocycle mu that gives the Moufang loop M_16(C_2 x C_4) as an extension of V by Z/2 from Theorem 2 of [1]
+
+The function mu: V x V -> Z/2={0,1} is defined by
+
+00000000
+00001111
+00001111
+00001111
+00000000
+00111100
+01011010
+01101001
+
+and is given in Example 1 of [2].
+
+[1] Orin Chein, Moufang Loops of Small Order. I, Trans. Am. Math. Soc. 188 (1974) 31–51.
+[2] Ben Nagy, David Michael Roberts, (Re)constructing code loops, arXiv:1903.02748
