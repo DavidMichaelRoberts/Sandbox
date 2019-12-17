@@ -4,33 +4,34 @@
 \usepackage[cmtip,all,color]{xy}\UseCrayolaColors
 
 \begin{document}
-\title{The product is braided in a symmetric monoidal category}
+\title{A braided monoidal category is symmetric if and only if the product is braided}
 \author{David Michael Roberts}
 \date{17 Dec 2019}
 
 \maketitle
 
 \noindent
-\textbf{The following diagram commutes,} by virtue of the symmetric monoidal category axioms, and shows in that case $\otimes\colon \mathcal{C} \times \mathcal{C} \to \mathcal{C}$ is a \emph{braided} strong monoidal functor. That $\otimes$ is a \emph{strong} monoidal functor is due to Joyal--Street (`Braided monoidal categories'\footnote{Available from \url{http://web.science.mq.edu.au/~street/JS1.pdf}}, Proposition 2). The vertical composites down the sides below are the comparison maps for pre- and post-functor products given by Joyal--Street.
-\bigskip
+\textbf{The following diagram commutes,} by virtue of the symmetric monoidal category axioms, and shows in that case $\otimes\colon \mathcal{C} \times \mathcal{C} \to \mathcal{C}$ is a \emph{braided} strong monoidal functor. That $\otimes$ is a \emph{strong} monoidal functor is due to Joyal--Street (`Braided monoidal categories'\footnote{Available at \url{http://web.science.mq.edu.au/~street/JS1.pdf}}, Proposition 2). The vertical composites down the sides below are the comparison maps for pre- and post-$\otimes$ products given by Joyal--Street.
 
 \[\centerline{
 	\xymatrix{
-	(AB)(CD) \ar@[orange][rrrrr]^\sigma \ar@[blue][d]_\alpha &
-	&&&& 
-	\ar@[blue][d]^\alpha (CD)(AB) \ar@[blue][dl]^{\alpha^{-1}}\\
+	 & (AB)(CD) \ar@[orange][rrr]^\sigma \ar@[blue][dl]_\alpha
+	&&&
+	\ar@[blue][dr]^\alpha (CD)(AB) \ar@[blue][d]^{\alpha^{-1}}& 
+	\\
 	%
 	%
-	A(B(CD))\ar@[blue][d]_{A\alpha^{-1}} \ar@[orange][r]^{A\sigma}& 
-	A((CD)B)\ar@[blue][ddd]^{A\alpha} \ar@[blue][rr]^{\alpha^{-1}}&
+	A(B(CD))\ar@[blue][d]_{A\alpha^{-1}} \ar@[orange][dr]^{A\sigma}& 
+	&
 	& 
-	(A(CD))B\ar@[blue][ddd]_{\alpha^{-1}B} \ar@[orange][r]^{\sigma B}&
+	&
 	((CD)A)B \ar@[blue][d]^{\alpha B}  & 
 	C(D(AB)) \ar@[blue][d]^{C\alpha^{-1}}\\
 	%
 	%
 	A((BC)D)\ar@[orange][d]_{A(\sigma D)}&
-	&&& 
+	A((CD)B)\ar@[blue][d]^{A\alpha} \ar@[blue][rr]^{\alpha^{-1}}&&
+	(A(CD))B\ar@[blue][d]_{\alpha^{-1}B} \ar@[orange][ur]^{\sigma B}& 
 	(C(DA))B \ar@[orange]@<1.5ex>[d]^{(C\sigma)B} 
 		\ar@[orange]@<-1.1ex>[d]^{\color{red}\stackrel{\ast}{=}}_{(C\sigma^{-1})B} 
 		\ar@[blue][r]^\alpha &
@@ -38,24 +39,24 @@
 	%
 	%
 	A((CB)D)\ar@[blue][d]_{A\alpha}&
-	&&& 
+	A(C(DB))\ar@[blue][dr]^{\alpha^{-1}}&&
+	((AC)D)B \ar@[blue][dl]_\alpha \ar@[orange][dr]^{(\sigma D)B}& 
 	(C(AD))B \ar@[blue][r]^\alpha& C((AD)B)\ar@[blue][d]^{C\alpha}\\
 	%
 	%
-	A(C(BD))\ar@[blue][d]_{\alpha^{-1}}\ar@[orange][r]^{A(C\sigma)}&
-	A(C(DB))\ar@[blue][r]^{\alpha^{-1}} & (AC)(DB)\ar@[orange][drrr]_{\sigma(DB)} & 
-	((AC)D)B \ar@[blue][l]_\alpha \ar@[orange][r]^{(\sigma D)B} &
-	((CA)D)B \ar@[blue][dr]^\alpha \ar@[blue][u]_{\alpha B}& 
-	C(A(DB))\ar@[blue][d]^{\alpha^{-1}}\\
+	A(C(BD))\ar@[blue][dr]_{\alpha^{-1}}\ar@[orange][ur]^{A(C\sigma)}&
+	 & (AC)(DB)\ar@[orange][drr]_{\sigma(DB)} & 
+	 &
+	((CA)D)B \ar@[blue][d]^\alpha \ar@[blue][u]_{\alpha B}& 
+	C(A(DB))\ar@[blue][dl]^{\alpha^{-1}}\\
 	%
 	%
-	(AC)(BD)\ar@[orange][rrrrr]_{\sigma \sigma} \ar@[orange][urr]_{(AC)\sigma} &
-	&&&&  
-	(CA)(DB)
+	 &(AC)(BD)\ar@[orange][rrr]_{\sigma \sigma} \ar@[orange][ur]_{(AC)\sigma} 
+	&&&(CA)(DB)&  
 	}
 	}
 \]
-\bigskip
+% \medskip
 
 \noindent
 In the diagram I have written $AB:= A\otimes B$ etc, and identity arrows $1_X$ are written as just $X$. 
@@ -63,9 +64,11 @@ Isomorphisms arising from associators ($\alpha$) are in blue, those arising from
 Notice that the equality $\color{red}\stackrel{\ast}{=}$ is the only place where the symmetry axiom is used.
 
 \medskip
+\noindent Conversely, take $\mathcal{C}$ to be merely braided and $\otimes$ a braided functor. If $B=C=I$ the diagram above implies $(I\sigma^{-1})I = (I\sigma)I\colon (I(DA))I \to (I(AD))I$. Applying naturality squares for $IX\to X$ and $XI\to X$ gives us that $\sigma^{-1}=\sigma$, hence $\mathcal{C}$ is braided.
+\medskip
 
 \noindent
-I'm sure this result is rather old, but haven't found a reference. It follows from high-powered abstract machinery about $E_n$ algebras in $\mathbf{Cat}$, but I think this was possible to prove by the time of Mac~Lane's 1963 coherence theorem for symmetric monoidal categories, at least.
+I'm sure this result is rather old, but haven't found a reference. It follows from high-powered abstract machinery about $E_\infty$-algebras in $\mathbf{Cat}$, but I think this was possible to prove by the time of Mac~Lane's 1963 coherence theorem.
 
 
 \end{document}
