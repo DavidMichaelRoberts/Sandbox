@@ -1,0 +1,71 @@
+\documentclass{amsart}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[cmtip,all,color]{xy}\UseCrayolaColors
+
+\begin{document}
+\title{The product is braided in a symmetric monoidal category}
+\author{David Michael Roberts}
+\date{17 Dec 2019}
+
+\maketitle
+
+\noindent
+\textbf{The following diagram commutes,} by virtue of the symmetric monoidal category axioms, and shows in that case $\otimes\colon \mathcal{C} \times \mathcal{C} \to \mathcal{C}$ is a \emph{braided} strong monoidal functor. That $\otimes$ is a \emph{strong} monoidal functor is due to Joyal--Street (`Braided monoidal categories'\footnote{Available from \url{http://web.science.mq.edu.au/~street/JS1.pdf}}, Proposition 2). The vertical composites down the sides below are the comparison maps for pre- and post-functor products given by Joyal--Street.
+\bigskip
+
+\[\centerline{
+	\xymatrix{
+	(AB)(CD) \ar@[orange][rrrrr]^\sigma \ar@[blue][d]_\alpha &
+	&&&& 
+	\ar@[blue][d]^\alpha (CD)(AB) \ar@[blue][dl]^{\alpha^{-1}}\\
+	%
+	%
+	A(B(CD))\ar@[blue][d]_{A\alpha^{-1}} \ar@[orange][r]^{A\sigma}& 
+	A((CD)B)\ar@[blue][ddd]^{A\alpha} \ar@[blue][rr]^{\alpha^{-1}}&
+	& 
+	(A(CD))B\ar@[blue][ddd]_{\alpha^{-1}B} \ar@[orange][r]^{\sigma B}&
+	((CD)A)B \ar@[blue][d]^{\alpha B}  & 
+	C(D(AB)) \ar@[blue][d]^{C\alpha^{-1}}\\
+	%
+	%
+	A((BC)D)\ar@[orange][d]_{A(\sigma D)}&
+	&&& 
+	(C(DA))B \ar@[orange]@<1.5ex>[d]^{(C\sigma)B} 
+		\ar@[orange]@<-1.1ex>[d]^{\color{red}\stackrel{\ast}{=}}_{(C\sigma^{-1})B} 
+		\ar@[blue][r]^\alpha &
+	C((DA)B) \ar@[orange][d]^{C(\sigma B)}\\
+	%
+	%
+	A((CB)D)\ar@[blue][d]_{A\alpha}&
+	&&& 
+	(C(AD))B \ar@[blue][r]^\alpha& C((AD)B)\ar@[blue][d]^{C\alpha}\\
+	%
+	%
+	A(C(BD))\ar@[blue][d]_{\alpha^{-1}}\ar@[orange][r]^{A(C\sigma)}&
+	A(C(DB))\ar@[blue][r]^{\alpha^{-1}} & (AC)(DB)\ar@[orange][drrr]_{\sigma(DB)} & 
+	((AC)D)B \ar@[blue][l]_\alpha \ar@[orange][r]^{(\sigma D)B} &
+	((CA)D)B \ar@[blue][dr]^\alpha \ar@[blue][u]_{\alpha B}& 
+	C(A(DB))\ar@[blue][d]^{\alpha^{-1}}\\
+	%
+	%
+	(AC)(BD)\ar@[orange][rrrrr]_{\sigma \sigma} \ar@[orange][urr]_{(AC)\sigma} &
+	&&&&  
+	(CA)(DB)
+	}
+	}
+\]
+\bigskip
+
+\noindent
+In the diagram I have written $AB:= A\otimes B$ etc, and identity arrows $1_X$ are written as just $X$. 
+Isomorphisms arising from associators ($\alpha$) are in blue, those arising from the braiding ($\sigma$) are in orange.
+Notice that the equality $\color{red}\stackrel{\ast}{=}$ is the only place where the symmetry axiom is used.
+
+\medskip
+
+\noindent
+I'm sure this result is rather old, but haven't found a reference. It follows from high-powered abstract machinery about $E_n$ algebras in $\mathbf{Cat}$, but I think this was possible to prove by the time of Mac~Lane's 1963 coherence theorem for symmetric monoidal categories, at least.
+
+
+\end{document}
